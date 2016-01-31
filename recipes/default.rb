@@ -49,7 +49,7 @@ when 'rhel'
 
 	include_recipe 'yum'
 
-	package 'java' if node[:platform_version].to_f >= 7.0 # Needed for RPM dependency
+	package 'java' if node[:platform_version].to_f < 7.0 # Needed for RPM dependency
 
 	remote_file "#{Chef::Config['file_cache_path']}/rundeck-config-#{node['rundeck']['rpm_version']}.noarch.rpm" do
 		owner 'root'
